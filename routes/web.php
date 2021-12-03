@@ -22,4 +22,10 @@ use Illuminate\Support\Facades\Route;
 Route::View('/login','login');
 Route::View('/test','test');
 Route::post('/login',[UserController::class,'login']);
+Route::get('/logout',[UserController::class,'logout']);
 Route::get('/',[ProductController::class,'index']);
+
+Route::middleware(['checkAuth'])->group(function(){
+    Route::view('about','about');
+    Route::view('contact','contact');
+});

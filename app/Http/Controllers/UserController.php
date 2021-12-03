@@ -18,4 +18,11 @@ class UserController extends Controller
             return redirect('/');
         }
     }
+
+    public function logout(){
+        if(session()->has('user')){
+            session()->pull('user',null);
+            return redirect('/');
+        }   
+    }
 }
